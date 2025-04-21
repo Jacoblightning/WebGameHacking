@@ -107,7 +107,7 @@ function setup() {
             currentScore = Math.round(this.highestScore * 0.025);
             cscr.innerText = currentScore;
         }
-        this.time = CDMOD_closureAccessFunc(getTimeStamp)();
+        this.time = CDMOD_closureAccessFunc("getTimeStamp")();
     }.bind(Runner.instance_)
 
     // To re-focus the canvas after performing an action. (Otherwise, space would re-trigger it)
