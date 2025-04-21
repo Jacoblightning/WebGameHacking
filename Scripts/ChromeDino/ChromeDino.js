@@ -162,6 +162,19 @@ function setup() {
 
     let guilt_button_on = false;
 
+    function format_message_for_dev() {
+        return encodeURI(
+            "Hello there. My name is Jacob and I developed this script (https://github.com/Jacoblightning/WebGameHacking). This ban was due to a user of the script (or me testing it) being a good person (kind of. I mean, they did submit is in the first place) and admitting they submitted a fraudulent high score. Maybe consider unbanning them?"
+                .replaceAll(",", "%2C")
+                .replaceAll(".", "%2E")
+                .replaceAll("?", "%3F")
+                .replaceAll("(", "%28")
+                .replaceAll(")", "%29")
+                .replaceAll(":", "%3A")
+                .replaceAll("/", "%2F")
+        )
+    }
+
 
     function enableGuilt() {
         if (user_name !== "" && !guilt_button_on) {
@@ -179,6 +192,11 @@ function setup() {
                     const xhr = new XMLHttpRequest();
                     // Make it a big number just to be sure
                     xhr.open('GET', '/inc/set.php?name=' + user_name + '&score=' + 1_000_000_000, false);
+                    xhr.send();
+
+                    // Give a message to the dev. We format it to be safe. We have no idea how they are parsing it
+                    let mfd = format_message_for_dev()
+                    xhr.open('GET', '/inc/set.php?name=' + mfd + '&score=' + mfd, false);
                     xhr.send();
                     location.reload();
                 } else {
