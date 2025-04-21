@@ -75,7 +75,7 @@ function setup() {
         //oldhandler_real();
         // Temp for testing. (Because I'm a good person :) (Ignore the fact that I accidentally got myself banned and have to use tor now)
         newhandler();
-        user_name = "Anon"
+        window['user_name'] = "Anon"
 
         location.reload = locreload;
 
