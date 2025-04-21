@@ -16,7 +16,7 @@
         elem.innerHTML = "<h1>Please wait... We have to inject our script into the website</h1>"
         document.getRootNode().documentElement.appendChild(elem);
     }
-    fetch("/")
+    fetch(location.href)
         .then(r => r.text())
         .then(r => {
             // Here we have 2 options, we could go the MutationObserver route (https://stackoverflow.com/a/59424277)
@@ -46,7 +46,6 @@
                     document.body.appendChild(script);
 
                     setup();
-                    alert("Sorry if this broke dark mode for you.");
                 })
         })
 }
@@ -108,7 +107,7 @@ function setup() {
             currentScore = Math.round(this.highestScore * 0.025);
             cscr.innerText = currentScore;
         }
-        this.time = getTimeStamp();
+        this.time = CDMOD_closureAccessFunc(getTimeStamp)();
     }.bind(Runner.instance_)
 
     // To re-focus the canvas after performing an action. (Otherwise, space would re-trigger it)
@@ -179,7 +178,7 @@ function setup() {
                 if (confirmation) {
                     const xhr = new XMLHttpRequest();
                     // Make it a big number just to be sure
-                    xhr.open('GET', '/inc/set.php?name=' + user_name + '&score=' + 100000000, false);
+                    xhr.open('GET', '/inc/set.php?name=' + user_name + '&score=' + 1_000_000_000, false);
                     xhr.send();
                     location.reload();
                 } else {
