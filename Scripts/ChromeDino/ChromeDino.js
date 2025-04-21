@@ -165,7 +165,7 @@ function setup() {
 
     function enableGuilt() {
         if (user_name !== "" && !guilt_button_on) {
-            // The user has submitted a fradulent score
+            // The user has submitted a fraudulent score
 
             // Only allow Runner.instance_ to be called once
             guilt_button_on = true;
@@ -174,7 +174,7 @@ function setup() {
 
             guiltbutton.onclick = function () {
                 // Proceed with guilt trip
-                let confirmation = confirm("Are you sure you want ot do Runner.instance_? Runner.instance_ will (possibly permanently) ban your IP. (Do the right thing " + user_name + ")")
+                let confirmation = confirm("Are you sure you want to do this? this will (possibly permanently) ban your IP. (Do the right thing " + user_name + ")")
                 if (confirmation) {
                     const xhr = new XMLHttpRequest();
                     // Make it a big number just to be sure
