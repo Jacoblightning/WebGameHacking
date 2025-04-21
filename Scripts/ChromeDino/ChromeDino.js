@@ -153,10 +153,10 @@ function setup() {
         let changespeedbutton = document.createElement("button");
         changespeedbutton.onclick = function () {
             Runner.instance_.setSpeed(prompt("Speed?"))
+            afterAction();
         };
         changespeedbutton.innerHTML = "Change Speed";
         document.body.insertBefore(changespeedbutton, document.body.firstChild);
-        afterAction();
     }
 
 
